@@ -4,24 +4,20 @@ package com.lucky.agribackend.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "Crops")
-public class Crop {
+@Table(name = "Pestisides")
+public class Pestisides {
 
-   @Id
+    @Id
     private int id;
     private String name;
-    private String type;
-    private String description;
-    private String image;
-//    private String season;
-//    private String soil;
-
-
 }

@@ -21,7 +21,6 @@ public class Pest {
     private String name;
     private String type; // e.g., Insect, Fungus, Virus
     private String damageDescription; // Description of the damage caused
-    private String affectedStage; // Stage of crop when the pest attacks (e.g., Seedling, Maturity)
     private String controlMeasures; // Methods to control the pest
     
 

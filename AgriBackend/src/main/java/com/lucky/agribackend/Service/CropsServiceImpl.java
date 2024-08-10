@@ -2,6 +2,7 @@ package com.lucky.agribackend.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.lucky.agribackend.Dao.CropsService;
 import org.springframework.stereotype.Service;
 
 import com.lucky.agribackend.entity.Crop;
@@ -9,7 +10,7 @@ import com.lucky.agribackend.entity.Crop;
 
 @Service
 public class CropsServiceImpl implements CropsService {
-    
+
     private Map<Integer, Crop> cropsMap =  new HashMap<>();
     private int Cropid = 1;
 
@@ -33,26 +34,26 @@ public class CropsServiceImpl implements CropsService {
 
     @Override
     public Crop updateCrop(Crop crop) {
-        Crop ExistingCrop = cropsMap.get(crop.getId());
-        if (crop.getName() != null) {
-            ExistingCrop.setName(crop.getName());
-            
-        }
-        if (crop.getType() != null) {
-            ExistingCrop.setType(crop.getType());
-        }
-        if (crop.getDescription() != null) {
-            ExistingCrop.setDescription(crop.getDescription());
-        }  
-        if (crop.getImage() != null) {
-            ExistingCrop.setImage(crop.getImage());
-        }
-        if (crop.getSeason() != null) {
-            ExistingCrop.setSeason(crop.getSeason());
-        }
-        if (crop.getSoil() != null) {
-            ExistingCrop.setSoil(crop.getSoil());
-        }
+  Crop ExistingCrop = cropsMap.get(crop.getId());
+//        if (crop.getName() != null) {
+//            ExistingCrop.setName(crop.getName());
+//
+//        }
+//        if (crop.getType() != null) {
+//            ExistingCrop.setType(crop.getType());
+//        }
+//        if (crop.getDescription() != null) {
+//            ExistingCrop.setDescription(crop.getDescription());
+//        }
+//        if (crop.getImage() != null) {
+//            ExistingCrop.setImage(crop.getImage());
+//        }
+//        if (crop.getSeason() != null) {
+//            ExistingCrop.setSeason(crop.getSeason());
+//        }
+//        if (crop.getSoil() != null) {
+//            ExistingCrop.setSoil(crop.getSoil());
+//        }
         return ExistingCrop;
     }
 
@@ -77,7 +78,7 @@ public class CropsServiceImpl implements CropsService {
         Cropid = cropid;
     }
 
-    
+
 
 
 }
