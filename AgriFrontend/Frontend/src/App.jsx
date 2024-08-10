@@ -7,6 +7,10 @@ import Landing from './pages/Landing'
 import AboutUs from './pages/aboutus'
 import Login from './pages/login'
 import SignUp from './pages/signup'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -40,7 +44,20 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-    </>
+      <ToastContainer
+              position="top-left"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              />    
+
+      </>
   )
 }
 

@@ -13,18 +13,18 @@ import { Label } from "@/components/ui/label"
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function SignUp() {
+  const navigate = useNavigate();
   const [logindetails, setLoginDetails] = useState({
     username: '',
     password: ''
   });
   
-  // const handleReset = () =>{
-  //   setLoginDetails({
-  //     username: '',
-  //     password: ''
-  //   });
-  // }
 
   const handleForm = async (event) => {
     event.preventDefault();
@@ -41,25 +41,52 @@ function SignUp() {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:8080/login',
+        url: 'http://localhost:8080/register',
         headers: { 
             'Content-Type': 'application/json'
         },
         data: data
     };
 
-    try {
+    if(logindetails.username.trim()!="" && logindetails.password.trim()!=""){
         const response = await axios.request(config);
         console.log('Response:', JSON.stringify(response.data));
-    } catch (error) {
-        console.error('Error occurred:', error.response ? error.response.data : error.message);
+      
+        toast.success('User Registered Successfully', {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+          
+        navigate('/login');
+    } else{
+        toast.error('Try Again', {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          });
+          
     }
-};
+    setLoginDetails({
+      username: '',
+      password: ''
+    });
+  }
+
 
 
   return (
-    <>
-    <form onSubmit={handleForm}>
+  <form onSubmit={handleForm}>
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-full max-w-md shadow-xl shadow-zinc-800 mt-[-105px]">
         <CardHeader className="space-y-1">
@@ -101,12 +128,11 @@ function SignUp() {
           </div>
         </CardContent>
         <CardFooter>
-          <Button className="w-full" >Sign Up</Button>
+          <Button className="w-full" onClick={handleForm}>Sign Up</Button>
         </CardFooter>
       </Card>
     </div>
-    </form>
-    </>
+  </form>
   );
 }
 
