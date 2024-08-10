@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import React from 'react'
-
+import InfiniteCarousel from './InfiniteCarousel'
+import CardGrid from '@/components/cardgrid'
 function Landing() {
   return (
     <>
@@ -16,6 +17,15 @@ function Landing() {
       </form>
     </div>
     </section>
+    <section id="featured-content" className="py-20">
+        <div className="container mx-auto px-4">
+          <h3 className="text-2xl sm:text-3xl font-bold mb-8 text-center">Featured Agricultural Content</h3>
+          <InfiniteCarousel />
+        </div>
+    </section>
+    <div className=" min-h-screen">
+      <CardGrid />
+    </div>
     </>
   )
 }
