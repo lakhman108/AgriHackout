@@ -1,50 +1,44 @@
 package com.lucky.agribackend.Controller;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import com.lucky.agribackend.Service.CropService;
+import com.lucky.agribackend.entity.Crop;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import com.lucky.agribackend.Dao.CropsService;
-import com.lucky.agribackend.entity.Crop;
-
+import java.util.List;
 @RestController
-@RequestMapping("/crops")
+@RequestMapping("/api/crops")
 public class CropController {
-    
+
     @Autowired
-    CropsService cropService;
+    private CropService cropService;
 
-    @GetMapping("/all")
-    public Map<Integer,Crop> getAllCrops() {
-        return cropService.getAllCrops();
+    @GetMapping("/search")
+    public ResponseEntity<List<Crop>> searchCrops(@RequestParam String keyword) {
+        List<Crop> crops = cropService.searchCrops(keyword);
+        return ResponseEntity.ok(crops);
     }
 
-    @GetMapping("/{cropId}")
-    public Crop getCropById(@PathVariable int cropId) {
-        return cropService.getCropById(cropId);
+    @PostMapping
+    public ResponseEntity<Crop> createCrop(@RequestBody Crop crop) {
+        Crop createdCrop = cropService.createCrop(crop);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCrop);
     }
 
-    @PostMapping("/add")
-    public Crop addCrop(@RequestBody Crop crop) {
-        return cropService.addCrop(crop);
+    @PutMapping("/{id}")
+    public ResponseEntity<Crop> updateCrop(@PathVariable int id, @RequestBody Crop crop) {
+        crop.setId(id);
+        Crop updatedCrop = cropService.updateCrop(crop);
+        return ResponseEntity.ok(updatedCrop);
     }
-    @PutMapping("/update/{cropId}")
-    public Crop updateCrop(@RequestBody Crop crop, @PathVariable int cropId) {
-        return cropService.updateCrop(crop);
-    }
-    @DeleteMapping("/delete/{cropId}")
-    public void deleteCrop(@PathVariable int cropId) {
-        cropService.deleteCrop(cropId);
-    }
-    
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteCrop(@PathVariable int id) {
+        cropService.deleteCrop(id);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -2,32 +2,27 @@ package com.lucky.agribackend.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
+@ToString
+@NoArgsConstructor
 @Entity
-@Table(name = "Pests")
-public class Pest {
-
+@Table(name = "Diseases")
+public class Disease {
     @Id
     private int id;
     private String name;
     private String type;
-    private String url;
 
-
-
-
-
-
+    @OneToMany(mappedBy = "disease")
+    private List<CropDiseasePesticide> cropDiseasePesticides;
 }

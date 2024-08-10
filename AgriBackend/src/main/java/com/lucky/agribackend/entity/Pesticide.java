@@ -1,26 +1,29 @@
 package com.lucky.agribackend.entity;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.ToString;
 
-@NoArgsConstructor
+import java.util.List;
+
+@Data
 @AllArgsConstructor
-@Getter
-@Setter
+@ToString
+@NoArgsConstructor
 @Entity
-@Table(name = "Pestisides")
-public class Pestisides {
-
+@Table(name = "Pesticides")
+public class Pesticide {
     @Id
     private int id;
     private String name;
     private String imageurl;
-    private String doeses;
+    private int price;
 
+    @OneToMany(mappedBy = "pesticide")
+    private List<CropDiseasePesticide> cropDiseasePesticides;
 }
