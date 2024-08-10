@@ -6,6 +6,10 @@ import lombok.*;
 
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@ToString
+@NoArgsConstructor
 @Entity
 @Table(name = "Crops")
 public class Crop {
