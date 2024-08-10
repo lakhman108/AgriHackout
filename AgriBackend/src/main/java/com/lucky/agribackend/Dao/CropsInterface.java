@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CropsInterface extends JpaRepository<Crop,Integer> {
 
-    public List<Crop> findByName();
+    public List<Crop> findByName(String name);
 }
