@@ -50,8 +50,18 @@ function SignUp() {
 
     if(logindetails.username.trim()!="" && logindetails.password.trim()!=""){
         const response = await axios.request(config);
-        console.log('Response:', JSON.stringify(response.data));
-      
+        if(response.data == "User with given username already exists."){
+          toast.error("Username Is Already Taken",{
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+        }else{
         toast.success('User Registered Successfully', {
           position: "top-left",
           autoClose: 5000,
@@ -62,9 +72,11 @@ function SignUp() {
           progress: undefined,
           theme: "dark",
           });
-          
-        navigate('/login');
-    } else{
+          navigate('/login');
+        }
+        
+    }
+     else{
         toast.error('Try Again', {
           position: "top-left",
           autoClose: 5000,

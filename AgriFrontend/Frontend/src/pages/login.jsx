@@ -26,15 +26,10 @@ function Login() {
     event.preventDefault();
 
     const { username, password } = logindetails;
-    let obj = {
-      username,
-      password,
-    };
-    let data = JSON.stringify(obj);
+    const data = JSON.stringify({ username, password });
 
-    let config = {
+    const config = {
       method: 'post',
-      maxBodyLength: Infinity,
       url: 'http://localhost:8080/login',
       headers: { 
         'Content-Type': 'application/json'
@@ -45,12 +40,11 @@ function Login() {
     if (username.trim() !== "" && password.trim() !== "") {
       try {
         const response = await axios.request(config);
-        const token = response.data.token; // Adjust based on how the token is returned
+        const token = response.data; // Ensure token is returned as expected
         Cookies.set('authToken', token, { expires: 7 }); // Set cookie with expiration of 7 days
-        // console.log('Response:', JSON.stringify(response.data));
-        Console.log(Cookies.get('authToken'));
+        // console.log('Auth Token:', Cookies.get('authToken')); // Corrected logging
         navigate('/');
-        toast.success('User Loggedin Successfully', {
+        toast.success('User Logged In Successfully', {
           position: "top-left",
           autoClose: 5000,
           hideProgressBar: false,
