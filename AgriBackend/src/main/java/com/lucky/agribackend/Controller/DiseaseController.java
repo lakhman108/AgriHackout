@@ -18,8 +18,8 @@ public class DiseaseController {
     @Autowired
     private DiseaseService diseaseService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Disease>> searchDiseases(@RequestParam String keyword) {
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Disease>> searchDiseases(@PathVariable String keyword) {
         List<Disease> diseases = diseaseService.searchDiseases(keyword);
         return ResponseEntity.ok(diseases);
     }

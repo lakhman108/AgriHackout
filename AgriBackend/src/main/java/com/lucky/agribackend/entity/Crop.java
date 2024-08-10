@@ -1,6 +1,7 @@
 package com.lucky.agribackend.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,8 @@ public class Crop {
  private String description;
  private String image;
 
+
  @OneToMany(mappedBy = "crop")
+ @JsonIgnore
  private List<CropDiseasePesticide> cropDiseasePesticides;
 }
