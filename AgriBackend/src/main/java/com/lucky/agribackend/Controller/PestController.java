@@ -27,6 +27,12 @@ public class PestController {
         return pestsService.getAllPests();
     }
 
+    @GetMapping("/test")
+    public String test(){
+        return  "hello this is working fine";
+    }
+
+
     @GetMapping("/{pestId}")
     public Pest getPestById(@PathVariable int pestId) {
         return pestsService.getPestById(pestId);
