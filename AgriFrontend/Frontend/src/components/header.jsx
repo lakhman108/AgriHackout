@@ -20,6 +20,11 @@ const Header = () =>{
                 </div>
             </div> */}
             <div>
+            <h1 class="text-4xl font-bold text-green-800">
+            Crop<span class="text-green-500">Care</span>
+            </h1>
+            </div>
+            <div>
             <Link to={isSignUpPage ? "/login" : "/signup"}>
                 <Button>{isSignUpPage ? "Login" : "Sign Up"}</Button>
             </Link>

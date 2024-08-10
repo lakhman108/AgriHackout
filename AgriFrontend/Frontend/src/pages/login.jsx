@@ -33,10 +33,10 @@ function Login() {
             <Label htmlFor="username" className="text-start">Username</Label>
             <Input id="username" placeholder="Enter your username" />
           </div>
-          <div className="space-y-2 text-start">
+          {/* <div className="space-y-2 text-start">
             <Label htmlFor="email" className="text-start">Email</Label>
             <Input id="email" type="email" placeholder="Enter your email" />
-          </div>
+          </div> */}
           <div className="space-y-2 text-start">
             <Label htmlFor="password" className="text-start">Password</Label>
             <Input id="password" type="password" placeholder="Enter your password" />
