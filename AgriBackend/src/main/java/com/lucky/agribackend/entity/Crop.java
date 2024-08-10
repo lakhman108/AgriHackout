@@ -1,6 +1,7 @@
 package com.lucky.agribackend.entity;
 
 public class Crop {
+    public static int getCropid;
     private int id;
     private String name;
     private String type;

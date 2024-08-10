@@ -3,9 +3,11 @@ package com.lucky.agribackend.Controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,8 +36,15 @@ public class CropController {
     public Crop addCrop(@RequestBody Crop crop) {
         return cropService.addCrop(crop);
     }
-    // @PostMapping("/update")
-    // public String updateCrop() {
-    //     return cropService.updateCrop().toString();
-    // }
+    @PutMapping("/update/{cropId}")
+    public Crop updateCrop(@RequestBody Crop crop, @PathVariable int cropId) {
+        return cropService.updateCrop(crop);
+    }
+    @DeleteMapping("/delete/{cropId}")
+    public void deleteCrop(@PathVariable int cropId) {
+        cropService.deleteCrop(cropId);
+    }
+    
+
+
 }
