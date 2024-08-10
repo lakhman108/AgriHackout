@@ -9,7 +9,7 @@ import Login from './pages/login'
 import SignUp from './pages/signup'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import Profile from './pages/profile';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +33,10 @@ const router = createBrowserRouter([
       {
         path:"/SignUp",
         element: <SignUp/>,
+      },
+      {
+        path:'/Profile',
+        element:<Profile/>
       }
     ],
   },
