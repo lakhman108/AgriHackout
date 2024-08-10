@@ -11,7 +11,7 @@ import com.lucky.agribackend.entity.Crop;
 public class CropsServiceImpl implements CropsService {
     
     private Map<Integer, Crop> cropsMap =  new HashMap<>();
-    private int Cropid = 0;
+    private int Cropid = 1;
 
     @Override
     public Map<Integer,Crop> getAllCrops() {
