@@ -19,4 +19,7 @@ public class CropService {
 
     public void deleteCrop(int id) {
     }
+
+    public Crop createCrop(Crop crop) {
+    }
 }
