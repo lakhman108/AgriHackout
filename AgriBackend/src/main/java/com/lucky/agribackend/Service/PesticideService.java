@@ -10,4 +10,10 @@ public class PesticideService {
 
     public Pesticide createPesticide(Pesticide pesticide) {
     }
+
+    public Pesticide updatePesticide(Pesticide pesticide) {
+    }
+
+    public void deletePesticide(int id) {
+    }
 }
