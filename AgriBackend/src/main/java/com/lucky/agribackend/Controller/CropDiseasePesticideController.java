@@ -4,6 +4,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/crop")
-public class CropController {
+@RequestMapping("api/cropdiseasepesticide")
+public class CropDiseasePesticideController {
 }
