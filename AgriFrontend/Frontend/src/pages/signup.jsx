@@ -26,19 +26,36 @@ function SignUp() {
   //   });
   // }
 
-  const handleForm = (event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
-    // Sign up logic here
-    console.log(logindetails);
-    if(logindetails.username.trim() == "" || logindetails.password.trim()==""){
-      console.log("error username");
-    }
 
-    //submit the data to server
-    axios.post('http://localhost:8080/register',{logindetails})
-    .then(response => console.log(response))
-    .catch(err => console.log(err))
-  };
+    console.log('Form submitted with details:', logindetails);
+
+    const { username, password } = logindetails;
+    let obj = {
+        username,
+        password,
+    };
+    let data = JSON.stringify(obj);
+
+    let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:8080/login',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+        data: data
+    };
+
+    try {
+        const response = await axios.request(config);
+        console.log('Response:', JSON.stringify(response.data));
+    } catch (error) {
+        console.error('Error occurred:', error.response ? error.response.data : error.message);
+    }
+};
+
 
   return (
     <>
