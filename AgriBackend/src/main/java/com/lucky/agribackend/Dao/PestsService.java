@@ -1,4 +1,4 @@
-package com.lucky.agribackend.Service;
+package com.lucky.agribackend.Dao;
 
 import java.util.Map;
 

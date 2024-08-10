@@ -1,7 +1,6 @@
-package com.lucky.agribackend.Service;
+package com.lucky.agribackend.Dao;
 
 import java.util.Map;
-
 import com.lucky.agribackend.entity.Crop;
 
 public interface CropsService {

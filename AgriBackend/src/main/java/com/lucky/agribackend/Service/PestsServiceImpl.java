@@ -3,6 +3,7 @@ package com.lucky.agribackend.Service;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.lucky.agribackend.Dao.PestsService;
 import org.springframework.stereotype.Service;
 
 import com.lucky.agribackend.entity.Pest;
@@ -34,21 +35,21 @@ public class PestsServiceImpl implements PestsService {
     @Override
     public Pest updatePest(Pest pest) {
         Pest existingPest = pests.get(pest.getId());
-        if (pest.getName() != null) {
-            existingPest.setName(pest.getName());
-        }
-        if (pest.getType() != null) {
-            existingPest.setType(pest.getType());
-        }
-        if (pest.getDamageDescription() != null) {
-            existingPest.setDamageDescription(pest.getDamageDescription());
-        }
-        if (pest.getAffectedStage() != null) {
-            existingPest.setAffectedStage(pest.getAffectedStage());
-        }
-        if (pest.getControlMeasures() != null) {
-            existingPest.setControlMeasures(pest.getControlMeasures());
-        }
+//        if (pest.getName() != null) {
+//            existingPest.setName(pest.getName());
+//        }
+//        if (pest.getType() != null) {
+//            existingPest.setType(pest.getType());
+//        }
+//        if (pest.getDamageDescription() != null) {
+//            existingPest.setDamageDescription(pest.getDamageDescription());
+//        }
+//        if (pest.getAffectedStage() != null) {
+//            existingPest.setAffectedStage(pest.getAffectedStage());
+//        }
+//        if (pest.getControlMeasures() != null) {
+//            existingPest.setControlMeasures(pest.getControlMeasures());
+//        }
         return existingPest;
     }
 

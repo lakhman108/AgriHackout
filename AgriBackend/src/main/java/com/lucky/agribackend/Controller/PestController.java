@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lucky.agribackend.Service.PestsService;
+import com.lucky.agribackend.Dao.PestsService;
 import com.lucky.agribackend.entity.Pest;
 
 @RestController

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lucky.agribackend.Service.CropsService;
+import com.lucky.agribackend.Dao.CropsService;
 import com.lucky.agribackend.entity.Crop;
 
 @RestController
