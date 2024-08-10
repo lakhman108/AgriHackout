@@ -19,8 +19,8 @@ public class PesticideController {
     @Autowired
     private PesticideService pesticideService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Pesticide>> searchPesticides(@RequestParam String keyword) {
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Pesticide>> searchPesticides(@PathVariable String keyword) {
         List<Pesticide> pesticides = pesticideService.searchPesticides(keyword);
         return ResponseEntity.ok(pesticides);
     }

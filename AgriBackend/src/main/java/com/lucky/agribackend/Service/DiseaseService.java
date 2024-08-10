@@ -6,14 +6,16 @@ import com.lucky.agribackend.entity.Disease;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class DiseaseService {
 
     @Autowired
     private DiseaseInterface DiseaseRepo;
 
     public List<Disease> searchDiseases(String keyword) {
-        return DiseaseRepo.findByName(keyword);
+        return DiseaseRepo.findByNameIsContainingIgnoreCase(keyword);
     }
 
     public Disease createDisease(Disease disease) {

@@ -3,14 +3,18 @@ package com.lucky.agribackend.Service;
 import com.lucky.agribackend.Dao.CropsInterface;
 import com.lucky.agribackend.entity.Crop;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CropService {
 
+    @Autowired
     private CropsInterface cropRepo;
+
     public List<Crop> searchCrops(String keyword) {
-        return cropRepo.findByName(keyword);
+        return cropRepo.findByNameIsContainingIgnoreCase(keyword);
     }
 
     public Crop updateCrop(Crop crop) {
@@ -32,5 +36,9 @@ public class CropService {
     
     public Crop createCrop(Crop crop) {
         return cropRepo.save(crop);
+    }
+
+    public String searchallCrops() {
+        return "working fine";
     }
 }

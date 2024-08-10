@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/crops")
 public class CropController {
@@ -17,8 +18,14 @@ public class CropController {
     @Autowired
     private CropService cropService;
 
-    @GetMapping("/search")
-    public ResponseEntity<List<Crop>> searchCrops(@RequestParam String keyword) {
+    @GetMapping("/all")
+    public String searchallCrops() {
+
+        return cropService.searchallCrops();
+    }
+
+    @GetMapping("/search/{keyword}")
+    public ResponseEntity<List<Crop>> searchCrops(@PathVariable String keyword) {
         List<Crop> crops = cropService.searchCrops(keyword);
         return ResponseEntity.ok(crops);
     }
