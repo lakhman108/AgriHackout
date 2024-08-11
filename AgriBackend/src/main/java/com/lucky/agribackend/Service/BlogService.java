@@ -51,4 +51,8 @@ public class BlogService {
     public Blog getBlogById(int id) {
         return blogRepo.findById(id).orElse(null);
     }
+
+    public List<Blog> searchAll() {
+        return blogRepo.findAll();
+    }
 }
