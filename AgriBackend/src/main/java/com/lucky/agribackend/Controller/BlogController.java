@@ -17,13 +17,9 @@ public class BlogController {
 
     // Get all blogs or search by keyword
     @GetMapping
-    public ResponseEntity<List<Blog>> searchBlogs(@RequestParam(value = "keyword", required = false) String keyword) {
-        List<Blog> blogs;
-        if (keyword != null) {
-            blogs = blogService.searchBlogs(keyword);
-        } else {
-            blogs = blogService.getAllBlogs(); // You can add this method to get all blogs
-        }
+    public ResponseEntity<List<Blog>> searchBlogs() {
+        List<Blog> blogs=blogService.searchAll();
+
         return ResponseEntity.ok(blogs);
     }
 
