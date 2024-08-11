@@ -1,4 +1,4 @@
-import  { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const InfiniteCarousel = () => {
   const [blogs, setBlogs] = useState([]);
+  const [expandedIndex, setExpandedIndex] = useState(null); // State for tracking expanded description
 
   const fetchBlogs = async () => {
     const token = Cookies.get('authToken'); // Get the auth token from cookies
@@ -49,6 +50,10 @@ const InfiniteCarousel = () => {
     return () => clearInterval(interval);
   }, [blogs.length]);
 
+  const handleShowMore = () => {
+    setExpandedIndex((prevIndex) => (prevIndex === currentIndex ? null : currentIndex));
+  };
+
   return (
     <div className="relative w-full max-w-4xl mx-auto overflow-hidden bg-gray-900 rounded-lg shadow-xl">
       <div className="flex items-center justify-center h-[600px]"> {/* Increased height */}
@@ -80,7 +85,18 @@ const InfiniteCarousel = () => {
                     ></iframe>
                   </div>
                   <CardDescription className="text-gray-300 text-center">
-                    {blogs[currentIndex].content}
+                    {expandedIndex === currentIndex ? (
+                      blogs[currentIndex].content
+                    ) : (
+                      <p>
+                        {blogs[currentIndex].content.length > 100
+                          ? blogs[currentIndex].content.substring(0, 100) + '...'
+                          : blogs[currentIndex].content}
+                      </p>
+                    )}
+                    <Button variant="outline" className="mt-2 text-white border-white hover:bg-gray-700" onClick={handleShowMore}>
+                      {expandedIndex === currentIndex ? 'Show Less' : 'Show More'}
+                    </Button>
                   </CardDescription>
                 </CardContent>
                 <CardFooter className="justify-center">
