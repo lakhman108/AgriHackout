@@ -13,4 +13,5 @@ public class PesticideDTO {
     private String name;
     private String dosage;
     private Integer price;
+    private String imgurl;
 }
