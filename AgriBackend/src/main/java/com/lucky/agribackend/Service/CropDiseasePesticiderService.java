@@ -32,7 +32,11 @@ public class CropDiseasePesticiderService {
         List<CropDiseasePesticide> cropDiseasePesticides = cdpi.findByCropIdAndDiseaseIdIn(cropId, diseaseIds);
 
         return cropDiseasePesticides.stream()
-                .map(cdp -> new PesticideDTO(cdp.getPesticide().getName(), cdp.getDosage()))
+                .filter(cdp -> cdp.getPesticide() != null)  // Filter out null pesticides
+                .map(cdp -> new PesticideDTO(
+                        cdp.getPesticide().getName(),
+                        cdp.getDosage(),
+                        cdp.getPesticide().getPrice()))
                 .distinct()
                 .collect(Collectors.toList());
     }
