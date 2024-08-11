@@ -36,7 +36,7 @@ public class CropDiseasePesticiderService {
                 .map(cdp -> new PesticideDTO(
                         cdp.getPesticide().getName(),
                         cdp.getDosage(),
-                        cdp.getPesticide().getPrice()))
+                        cdp.getPesticide().getPrice(),cdp.getPesticide().getImageurl()))
                 .distinct()
                 .collect(Collectors.toList());
     }
