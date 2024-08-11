@@ -19,7 +19,7 @@ public class CropController {
     private CropService cropService;
 
     @GetMapping("/all")
-    public String searchallCrops() {
+    public List<Crop> challCrops() {
 
         return cropService.searchallCrops();
     }

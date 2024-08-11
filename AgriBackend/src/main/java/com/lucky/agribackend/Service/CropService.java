@@ -38,7 +38,7 @@ public class CropService {
         return cropRepo.save(crop);
     }
 
-    public String searchallCrops() {
-        return "working fine";
+    public List<Crop> searchallCrops() {
+        return cropRepo.findAll();
     }
 }

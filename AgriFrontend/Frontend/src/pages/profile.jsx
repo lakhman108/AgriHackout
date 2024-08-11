@@ -1,20 +1,17 @@
-import React from 'react'
+import React from 'react';
 import {
     Card,
     CardContent,
     CardDescription,
-    CardFooter,
     CardHeader,
     CardTitle,
+    CardFooter,
   } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label"
 import Cookies from 'js-cookie';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
 function Profile() {
-    const [userData, setUserData] = useState({
+  const [userData, setUserData] = useState({
     username: '',
     password: ''
   });
@@ -27,6 +24,17 @@ function Profile() {
     // Update the state with the retrieved values
     setUserData({ username, password });
   }, []);
+
+  const handleLogout = () => {
+    // Clear the cookies
+    Cookies.remove('authToken');
+    Cookies.remove('userName');
+    Cookies.remove('passWord');
+
+    // Redirect to the login page (or any other page)
+    window.location.href = '/login'; // Adjust the path to your login page
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       <Card className="w-full max-w-md shadow-xl shadow-zinc-800 mt-[-240px]">
@@ -42,17 +50,17 @@ function Profile() {
           </div>
 
           <div className="space-y-2 text-start text-white">
-            <h1>password : {userData.password}</h1>
+            <h1>Password : {userData.password}</h1>
           </div>
-          
         </CardContent>
-       
+        <CardFooter>
+          <button onClick={handleLogout} className="w-full bg-red-500 text-white p-2 rounded mt-4">
+            Logout
+          </button>
+        </CardFooter>
       </Card>
     </div>
-  )
+  );
 }
 
-export default Profile
-
-
-
+export default Profile;

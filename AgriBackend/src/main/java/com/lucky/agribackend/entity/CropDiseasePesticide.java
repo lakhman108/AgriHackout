@@ -1,5 +1,7 @@
 package com.lucky.agribackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,14 +21,17 @@ public class CropDiseasePesticide {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "crop_id")
     private Crop crop;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "disease_id")
     private Disease disease;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "pesticide_id")
     private Pesticide pesticide;
 

@@ -41,7 +41,7 @@ function Login() {
       try {
         const response = await axios.request(config);
         const token = response.data; // Ensure token is returned as expected
-        Cookies.set('authToken', token, { expires: 1/1440 }); // Set cookie with expiration of 1 days
+        Cookies.set('authToken', token, { expires: 1 }); // Set cookie with expiration of 1 days
         // console.log('Auth Token:', Cookies.get('authToken')); // Corrected logging
         Cookies.set('userName',username,{expires:1});
         Cookies.set('passWord',password,{expires:1});
