@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const DiseasesPage = () => {
   const { id } = useParams();
   const [diseases, setDiseases] = useState([]);
   const [selectedDiseases, setSelectedDiseases] = useState([]);
+  const navigate = useNavigate();  // Use useNavigate hook
 
   useEffect(() => {
     // Fetch diseases from API
@@ -59,6 +60,9 @@ const DiseasesPage = () => {
 
       const result = await response.json();
       console.log(result);  // Handle the response as needed
+
+      // Redirect to the PesticidesPage and pass data
+      navigate(`/pesticides/${id}`, { state: { pesticides: result } });
     } catch (error) {
       console.error('Error submitting selected diseases:', error);
     }

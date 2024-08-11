@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './pages/profile';
 import DiseasesPage from './pages/diseasesPage';
+import PesticidesPage from './pages/pesticidepage';
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path:'/diseases/:id',
         element:<DiseasesPage />
+      },
+      {
+        path:'pesticides/:id',
+        element:<PesticidesPage />
       }
     ],
   },
