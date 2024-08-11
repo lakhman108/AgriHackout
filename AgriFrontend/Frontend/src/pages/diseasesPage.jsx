@@ -83,9 +83,9 @@ const DiseasesPage = () => {
                 onChange={() => handleCheckboxChange(disease.id)}
                 checked={selectedDiseases.includes(disease.id)}
               />
-              <h2 className="text-3xl font-bold text-white">{disease.name}</h2>
+              <h2 className="text-3xl font-bold text-white">Disease : <span className='text-green-400'>{disease.name}</span></h2>
             </label>
-            <p className="text-lg text-gray-300 mb-4">Type: {disease.type}</p>
+            <p className="text-lg text-gray-300 mb-4 text-start pl-6">Type : <span className='text-green-400'>{disease.type}</span></p>
           </div>
         ))
       ) : (
