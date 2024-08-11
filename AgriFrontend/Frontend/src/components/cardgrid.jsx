@@ -7,7 +7,7 @@ const CardGrid = () => {
   const [crops, setCrops] = useState([]);
 
   const fetchCrops = async () => {
-    const token = Cookies.get('authToken'); 
+    const token = Cookies.get('authToken');
     console.log(token);
     try {
       const response = await axios.get('http://localhost:8080/api/crops/all', {
@@ -37,7 +37,7 @@ const CardGrid = () => {
       <h2 className="font-bold mb-8 text-center text-green-500 text-7xl">Crops</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {crops.map((crop, index) => (
-          <Chakra key={index} name={crop.name} imageUrl={crop.image} /> // Pass the name and imageUrl to Chakra
+          <Chakra key={index} id={crop.id} name={crop.name} imageUrl={crop.image} /> // Pass the name and imageUrl to Chakra
         ))}
       </div>
     </div>

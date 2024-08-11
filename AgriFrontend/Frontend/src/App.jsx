@@ -10,6 +10,7 @@ import SignUp from './pages/signup'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Profile from './pages/profile';
+import DiseasesPage from './pages/diseasesPage';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Landing />,
       },
-   
+
       {
         path: "/AboutUs",
         element: (
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path:'/Profile',
         element:<Profile/>
+      },
+      {
+        path:'/diseases/:id',
+        element:<DiseasesPage />
       }
     ],
   },
@@ -59,7 +64,7 @@ function App() {
               draggable
               pauseOnHover
               theme="dark"
-              />    
+              />
 
       </>
   )
