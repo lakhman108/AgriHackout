@@ -18,7 +18,7 @@ const PesticidesPage = () => {
             >
               <h2 className="text-2xl font-bold text-green-400 mb-2">{pesticide.name}</h2>
               <p className="text-lg text-gray-300 mb-2">Dosage: {pesticide.dosage}</p>
-              <p className="text-lg text-gray-300">Price: ${pesticide.price}</p>
+              <p className="text-lg text-gray-300">Price: rs.{pesticide.price}</p>
 
             </div>
           ))}
