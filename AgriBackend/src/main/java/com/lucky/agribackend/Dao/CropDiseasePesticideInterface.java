@@ -14,4 +14,6 @@ public interface CropDiseasePesticideInterface extends JpaRepository<CropDisease
 
     @Query("SELECT DISTINCT cdp.disease.id FROM CropDiseasePesticide cdp WHERE cdp.crop.id = :cropId")
     List<Integer> findUniqueDiseaseIdsByCropId(@Param("cropId") int cropId);
+
+    List<CropDiseasePesticide> findByCropIdAndDiseaseIdIn(Integer cropId, List<Integer> diseaseIds);
 }

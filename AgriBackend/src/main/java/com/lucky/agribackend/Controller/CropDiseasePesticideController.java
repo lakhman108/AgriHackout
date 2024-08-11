@@ -2,9 +2,7 @@ package com.lucky.agribackend.Controller;
 
 import com.lucky.agribackend.Service.CropDiseasePesticiderService;
 import com.lucky.agribackend.Service.CropService;
-import com.lucky.agribackend.entity.Crop;
-import com.lucky.agribackend.entity.CropDiseasePesticide;
-import com.lucky.agribackend.entity.Disease;
+import com.lucky.agribackend.entity.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +20,17 @@ private CropDiseasePesticiderService cde;
 
     @GetMapping("{id}")
     public List<Disease> findbycropid(@PathVariable int id) {
-        return cde.findDiseaseIdsByCropId(id);
 
+        List<Disease> some=cde.findDiseaseIdsByCropId(id);
+        for (Disease d:some) {
+            d.setCropDiseasePesticides(null);
+        }
+        return some;
+
+    }
+
+    @PostMapping("{cropid}")
+    public List<PesticideDTO> findRelatedPesticides(@RequestBody List<Integer> diseases, @PathVariable Integer cropid){
+        return cde.findrelatedpesticides(cropid,diseases);
     }
 }
