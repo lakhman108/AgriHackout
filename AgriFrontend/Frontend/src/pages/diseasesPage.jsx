@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 const DiseasesPage = () => {
   const { id } = useParams();
   const [diseases, setDiseases] = useState([]);
-  const [selectedPesticides, setSelectedPesticides] = useState([]);
+  const [selectedDiseases, setSelectedDiseases] = useState([]);
 
   useEffect(() => {
     // Fetch diseases from API
@@ -29,54 +29,71 @@ const DiseasesPage = () => {
     fetchDiseases();
   }, [id]);
 
-  const handleCheckboxChange = (pesticideId) => {
-    setSelectedPesticides((prevSelected) =>
-      prevSelected.includes(pesticideId)
-        ? prevSelected.filter((id) => id !== pesticideId)
-        : [...prevSelected, pesticideId]
+  const handleCheckboxChange = (diseaseId) => {
+    setSelectedDiseases((prevSelected) =>
+      prevSelected.includes(diseaseId)
+        ? prevSelected.filter((id) => id !== diseaseId)
+        : [...prevSelected, diseaseId]
     );
+  };
+
+  const handleSubmit = async () => {
+    const token = Cookies.get('authToken');  // Replace with actual token retrieval method
+    const payload = selectedDiseases; // Directly use the array of IDs
+
+    console.log(payload);  // For debugging purposes
+
+    try {
+      const response = await fetch(`http://localhost:8080/api/cropdiseasepesticide/${id}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)  // Send the array directly as JSON
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result);  // Handle the response as needed
+    } catch (error) {
+      console.error('Error submitting selected diseases:', error);
+    }
   };
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
-  {diseases.length > 0 ? (
-    diseases.map((disease) => (
-      <div
-        key={disease.id}
-        className="bg-zinc-800 shadow-2xl shadow-slate-700 rounded-lg p-6 mb-10"
+      {diseases.length > 0 ? (
+        diseases.map((disease) => (
+          <div
+            key={disease.id}
+            className="bg-zinc-800 shadow-2xl shadow-slate-700 rounded-lg p-6 mb-10"
+          >
+            <label className="flex items-center mb-4">
+              <input
+                type="checkbox"
+                className="mr-2"
+                onChange={() => handleCheckboxChange(disease.id)}
+                checked={selectedDiseases.includes(disease.id)}
+              />
+              <h2 className="text-3xl font-bold text-white">{disease.name}</h2>
+            </label>
+            <p className="text-lg text-gray-300 mb-4">Type: {disease.type}</p>
+          </div>
+        ))
+      ) : (
+        <p className="text-gray-500">Loading disease data...</p>
+      )}
+      <button
+        onClick={handleSubmit}
+        className="mt-6 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
       >
-        <h2 className="text-3xl font-bold mb-4 text-white">Diseases Name : <span className='text-green-400'>{disease.name}</span></h2>
-        <p className="text-lg text-gray-300 mb-4">Diseases Type : <span className='text-green-400'>{disease.type}</span></p>
-
-        <h3 className="text-2xl font-semibold text-green-500 mb-3 text-start">
-          Recommended Pesticides:
-        </h3>
-        <ul>
-          {disease.cropDiseasePesticides && disease.cropDiseasePesticides.length > 0 ? (
-            disease.cropDiseasePesticides.map((pesticide) => (
-              <li key={pesticide.id} className="mb-3">
-                <label className="flex items-center text-white">
-                  <input
-                    type="checkbox"
-                    className="mr-2"
-                    onChange={() => handleCheckboxChange(pesticide.id)}
-                    checked={selectedPesticides.includes(pesticide.id)}
-                  />
-                  <span>{`Pesticide ID: ${pesticide.id} - Dosage: ${pesticide.dosage}`}</span>
-                </label>
-              </li>
-            ))
-          ) : (
-            <p className="text-gray-500">No recommended pesticides found.</p>
-          )}
-        </ul>
-      </div>
-    ))
-  ) : (
-    <p className="text-gray-500">Loading disease data...</p>
-  )}
-</div>
-
+        Submit Selected Diseases
+      </button>
+    </div>
   );
 };
 
