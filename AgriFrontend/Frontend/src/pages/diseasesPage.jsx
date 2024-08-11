@@ -14,7 +14,7 @@ const DiseasesPage = () => {
 
     const fetchDiseases = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/api/cropdiseasepesticide/${id}`, {
+        const response = await fetch(`http://3.80.176.177:8080/api/cropdiseasepesticide/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -45,7 +45,7 @@ const DiseasesPage = () => {
     console.log(payload);  // For debugging purposes
 
     try {
-      const response = await fetch(`http://localhost:8080/api/cropdiseasepesticide/${id}`, {
+      const response = await fetch(`http://3.80.176.177:8080/api/cropdiseasepesticide/${id}`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

@@ -10,7 +10,7 @@ const CardGrid = () => {
     const token = Cookies.get('authToken');
     console.log(token);
     try {
-      const response = await axios.get('http://localhost:8080/api/crops/all', {
+      const response = await axios.get('http://3.80.176.177:8080/api/crops/all', {
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -13,7 +13,7 @@ const InfiniteCarousel = () => {
   const fetchBlogs = async () => {
     const token = Cookies.get('authToken'); // Get the auth token from cookies
     try {
-      const response = await axios.get('http://localhost:8080/api/blogs', {
+      const response = await axios.get('http://3.80.176.177:8080/api/blogs', {
         headers: {
           'Authorization': `Bearer ${token}` // Pass the Authorization header
         }

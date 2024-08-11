@@ -30,8 +30,8 @@ function Login() {
 
     const config = {
       method: 'post',
-      url: 'http://localhost:8080/login',
-      headers: { 
+      url: 'http://3.80.176.177:8080/login',
+      headers: {
         'Content-Type': 'application/json'
       },
       data: data

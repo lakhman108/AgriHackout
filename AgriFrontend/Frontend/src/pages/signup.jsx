@@ -24,7 +24,7 @@ function SignUp() {
     username: '',
     password: ''
   });
-  
+
 
   const handleForm = async (event) => {
     event.preventDefault();
@@ -41,8 +41,8 @@ function SignUp() {
     let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:8080/register',
-        headers: { 
+        url: 'http://3.80.176.177:8080/register',
+        headers: {
             'Content-Type': 'application/json'
         },
         data: data
@@ -74,7 +74,7 @@ function SignUp() {
           });
           navigate('/login');
         }
-        
+
     }
      else{
         toast.error('Try Again', {
@@ -87,7 +87,7 @@ function SignUp() {
           progress: undefined,
           theme: "dark",
           });
-          
+
     }
     setLoginDetails({
       username: '',
@@ -110,26 +110,26 @@ function SignUp() {
         <CardContent className="space-y-5">
           <div className="space-y-2 text-start">
             <Label htmlFor="username" className="text-start">Username</Label>
-            <Input 
-              id="username" 
-              placeholder="Choose a username" 
-              value={logindetails.username} 
+            <Input
+              id="username"
+              placeholder="Choose a username"
+              value={logindetails.username}
               onChange={(e) => setLoginDetails({
-                ...logindetails, 
+                ...logindetails,
                 username: e.target.value
-              })} 
+              })}
             />
           </div>
 
           <div className="space-y-2 text-start">
             <Label htmlFor="password" className="text-start">Password</Label>
-            <Input 
-              id="password" 
-              type="password" 
-              placeholder="Choose a password" 
+            <Input
+              id="password"
+              type="password"
+              placeholder="Choose a password"
               value={logindetails.password}
               onChange={(e) => setLoginDetails({
-                ...logindetails, 
+                ...logindetails,
                 password: e.target.value
               })}
             />
