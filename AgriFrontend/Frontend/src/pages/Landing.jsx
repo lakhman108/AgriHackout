@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import React from 'react'
+
 import InfiniteCarousel from './InfiniteCarousel'
 import CardGrid from '@/components/cardgrid'
 function Landing() {
